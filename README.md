@@ -1,5 +1,5 @@
 # transposematrix
-Transpose a matrix in C++ with SSE and AVX2
+Transpose a matrix in C++ with SSE (4 by 4) and AVX2 (8 by 8)
 
 ## Results 
 
