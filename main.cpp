@@ -4,14 +4,22 @@
 #include <numeric>
 #include <immintrin.h>
 #include <chrono>
-#include "matrix.hpp"
+#include <cstdlib>
+#include "matrix.hpp" 
 
 using namespace std::chrono;
 
-const int R = 1LL << 12;
-const int C = 1LL << 12;
+int main(int argc, char *argv[]) {
+    if(argc < 2) {
+        std::cerr << "Early termination" << std::endl; 
+        return 1;
+    }    
 
-int main() {
+    int N = std::atoi(argv[1]);
+    std::cout << "Performing operations on a 2^N square matrix.\n";
+    const int R = 1LL << N;
+    const int C = 1LL << N;
+    
     Matrix<int> mat(R, C);
     auto start = high_resolution_clock::now();
     Matrix<int> bf_trans = mat.bf();
@@ -38,7 +46,7 @@ int main() {
     }
 
     if(bf_trans == avx88_trans) {
-        std::cout << "SSE Time taken: " << avx88_duration << "\n";
+        std::cout << "avx88 Time taken: " << avx88_duration << "\n";
     } else {
         std::cout << "avx88 computation is incorrect.\n"; 
         sse44_trans.print();

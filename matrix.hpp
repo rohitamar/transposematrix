@@ -6,7 +6,7 @@ template <typename T>
 struct AlignedAllocator {
     using value_type = T;
     T* allocate(size_t n) {
-        return static_cast<T*>(_mm_malloc(n * sizeof(T), 64)); // 64-byte aligned
+        return static_cast<T*>(_mm_malloc(n * sizeof(T), 32)); // 32-byte aligned
     }
 
     void deallocate(T* p, std::size_t) noexcept {
