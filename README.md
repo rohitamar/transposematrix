@@ -3,7 +3,7 @@ Transpose a matrix in C++ with SSE (4 by 4) and AVX2 (8 by 8)
 
 ## Results 
 
-| N | ```brute_force``` | ```SSE, 4 by 4``` | ```AVX2, 8 by 8``` | 
+| ```N``` | ```brute_force``` | ```SSE, 4 by 4``` | ```AVX2, 8 by 8``` | 
 |---|-------------------|-------------------|--------------------|
 |10 | 10 | 6 | 5 |
 |11 | 46 | 25 | 26 |
