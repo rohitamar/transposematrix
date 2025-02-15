@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     }    
 
     int N = std::atoi(argv[1]);
-    std::cout << "Performing operations on a 2^N square matrix.\n";
+    std::cout << "Performing operations on a 2^" << N << " square matrix.\n";
     const int R = 1LL << N;
     const int C = 1LL << N;
     
@@ -24,17 +24,17 @@ int main(int argc, char *argv[]) {
     auto start = high_resolution_clock::now();
     Matrix<int> bf_trans = mat.bf();
     auto end = high_resolution_clock::now();
-    double normal_duration = duration_cast<microseconds>(end - start).count();
+    double normal_duration = duration_cast<milliseconds>(end - start).count();
 
     start = high_resolution_clock::now(); 
     Matrix<int> sse44_trans = mat.sse44();
     end = high_resolution_clock::now();
-    double sse_duration = duration_cast<microseconds>(end - start).count();
+    double sse_duration = duration_cast<milliseconds>(end - start).count();
 
     start = high_resolution_clock::now(); 
     Matrix<int> avx88_trans = mat.avx88();
     end = high_resolution_clock::now();
-    double avx88_duration = duration_cast<microseconds>(end - start).count();
+    double avx88_duration = duration_cast<milliseconds>(end - start).count();
 
     std::cout << "Normal Time taken: " << normal_duration << "\n";
 
@@ -51,9 +51,4 @@ int main(int argc, char *argv[]) {
         std::cout << "avx88 computation is incorrect.\n"; 
         sse44_trans.print();
     }
-
-
-
-    
-    // std::cout << "Ratio: " << normal_duration / sse_duration << "\n";
 }
